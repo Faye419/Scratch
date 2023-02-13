@@ -14,18 +14,25 @@ to scrape another site you should go and inspect the site in the browser first, 
 //returns one large string of all text
 function getParagraphText(soupTag){
     let paragraphs = soupTag.findAll('p');
+    let aTags = soupTag.findAll('a');
     let text = '';
+    let sentence = [];
+    
+
     for(let i = 0; i < paragraphs.length; i++){
-        let p = paragraphs[i].getText().toLowerCase();
+    
+        let p = paragraphs[i].getText().toLowerCase(); 
 
-    if(p.indexOf("Butterfly") != -1){
-    console.log(p);
-    text += p;
+      
+
+        if(p.indexOf("insect") != -1){ 
+        console.log(p);
+        text += p;
+        sentence = text.split('. ')
+    }
     }
 
-    }
-    console.log(soupTag);
-    return text;
+    return sentence;
 }
   
 
